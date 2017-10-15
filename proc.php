@@ -20,7 +20,7 @@ function echeck($name, $mes){
 //日付と時刻の取得
 function daytime(){
 	date_default_timezone_set('Asia/Tokyo'); //タイムゾーンの設定
-	return date("Y/m/d H:i:s");
+	return date("Y-m-d H:i:s");
 }
 
 //アウトプット関数（表示、preview時に必要）
