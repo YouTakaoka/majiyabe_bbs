@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>なんでも質問掲示板（バージョン3.3）</title>
+<title>なんでも質問掲示板（バージョン4.0）</title>
   <script type="text/javascript"
 src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <link rel="stylesheet" href="http://yuyanagi.html.xdomain.jp/mystyles.css">
@@ -42,7 +42,7 @@ $WRITE = "$BBS_HOME/write.php";
 require "$BBS_HOME/proc.php";
 require "$BBS_HOME/private/db.php";
    
-$thread="thread1";
+$thread="thread2";
  
 // データベースへ接続する
 $mysqli = new mysqli( $db_host, $db_user, $db_pass, $db_name );

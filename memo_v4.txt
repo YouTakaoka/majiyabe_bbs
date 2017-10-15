@@ -1,0 +1,13 @@
+[memo for v4.0]
+・IPアドレス記録
+・連投禁止
+
+＜クエリmemo＞
+・テーブル作成
+create table thread2(
+    id int not null auto_increment primary key,
+    name varchar(20),
+    daytime timestamp default current_timestamp,
+    comment text,
+    ip_addr varchar(20)
+);

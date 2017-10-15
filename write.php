@@ -1,6 +1,6 @@
 <?php
 /**
-* version 3.3
+* version 4.0
 */
 
 // Define constants
@@ -9,7 +9,7 @@ $BBS = "$BBS_HOME/bbs.php";
 
 require "$BBS_HOME/proc.php";
 require "$BBS_HOME/private/db.php";
-$thread="thread1";
+$thread="thread2";
 
 //メッセージを受け取る
 $name=$_POST['name'];
@@ -37,11 +37,11 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 	}
 
 	$query = "insert into ".$thread." ("
-			."name,daytime,comment"
+			."name, comment, ip_addr"
 			.") values ("
 			."'".$mysqli->real_escape_string( $name ) ."',"
-			."'".$mysqli->real_escape_string( daytime() ) ."',"
-			."'".$mysqli->real_escape_string( $mes ) ."'"
+			."'".$mysqli->real_escape_string( $mes ) ."',"
+			."'".$mysqli->real_escape_string( $_SERVER["REMOTE_ADDR"] ) ."'"
 			.")";
 	$res = $mysqli->query($query); //データベースへ書き込み
 		
