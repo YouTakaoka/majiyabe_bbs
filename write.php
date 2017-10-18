@@ -1,11 +1,15 @@
 <?php
 /**
-* version 4.0
+* version 4.1
+* continuous post checking
 */
 
 // Define constants
 $BBS_HOME = ".";
 $BBS = "$BBS_HOME/bbs.php";
+$DIFF = new DateInterval("PT1M"); // post time difference threshold = 1minute
+$NOW = new DateTime("now");
+$IP_ADDR = $_SERVER["REMOTE_ADDR"];
 
 require "$BBS_HOME/proc.php";
 require "$BBS_HOME/private/db.php";
@@ -36,12 +40,26 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
 		exit;
 	}
 
+        /* When connection is successful */
+        
+        /* Check continuous post */
+        // Get the ip address of the last post
+        $query = "select daytime from ".$thread." where ip_addr = '".$IP_ADDR."' order by daytime desc limit 1;";
+        $res = $mysqli->query($query);
+        $row = $res->fetch_assoc();
+        $last = new DateTime($row['daytime']);
+
+        if($NOW < $last->add($DIFF)){
+                die("一分以内の連続した書込みはできません。<br>\n<a href='$BBS'>掲示板にもどる</a>");
+        }
+        
+        // Make query and write database
 	$query = "insert into ".$thread." ("
 			."name, comment, ip_addr"
 			.") values ("
 			."'".$mysqli->real_escape_string( $name ) ."',"
 			."'".$mysqli->real_escape_string( $mes ) ."',"
-			."'".$mysqli->real_escape_string( $_SERVER["REMOTE_ADDR"] ) ."'"
+			."'".$mysqli->real_escape_string( $IP_ADDR ) ."'"
 			.")";
 	$res = $mysqli->query($query); //データベースへ書き込み
 		
