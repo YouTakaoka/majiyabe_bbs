@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>なんでも質問掲示板（バージョン4.0）</title>
+<title>なんでも質問掲示板（バージョン4.1）</title>
   <script type="text/javascript"
 src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <link rel="stylesheet" href="http://yuyanagi.html.xdomain.jp/mystyles.css">
@@ -16,7 +16,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 <!-- <body class="body1"> -->
 <body>
-<p>なんでも質問掲示板（仮）です。</p>
+<p>なんでも質問掲示板（セキュアヴァージョン）です。</p>
 
 <form name="subform" action="write.php" method="post">
 <!--ボタンを押すとwrite.phpに飛ぶ．フレームの場合は中身だけ変わる-->
