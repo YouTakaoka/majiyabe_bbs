@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD']!='POST'){
         $row = $res->fetch_assoc();
         $last = new DateTime($row['daytime']);
 
-        if($NOW < $last->add($DIFF)){
+        if(!is_null($row) && $NOW < $last->add($DIFF)){
                 die("一分以内の連続した書込みはできません。<br>\n<a href='$BBS'>掲示板にもどる</a>");
         }
         
