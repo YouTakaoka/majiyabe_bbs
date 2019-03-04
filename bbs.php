@@ -55,7 +55,7 @@ if ($err = $mysqli->connect_error) {
 	exit;
 }
 
-$query = "select id,name,daytime,comment from ".$thread;
+$query = "select id,name,daytime,comment from `".$thread."` ORDER BY `daytime` DESC LIMIT 0,30";
 $res = $mysqli->query($query);
 
 //読み込み失敗時の処理
